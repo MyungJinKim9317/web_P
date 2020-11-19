@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="estimate">
+
+
+	<insert id="estimateAdd"
+		parameterType="com.woongjin.woongs.model.EstimateDto">
+		insert into estimate(tag,sub_tag,title,description,budget,proposal,content,work_time)
+		values(#{tag},#{sub_tag},#{title},#{description},#{budget},#{proposal},#{content},#{work_time})
+	</insert>
+
+	<select id="orderEstimate" resultType="com.woongjin.woongs.model.EstimateDto">
+	select *
+	from estimate
+	where 
+	order by e.no desc;
+	</select>
+	
+	<select id="estimatePost"
+	resultType="com.woongjin.woongs.model.EstimateDto">
+	select e.no as no, t.name as name, budget,
+		s.name sub_name, title, description, work_time
+		from estimate e, tag t, sub_tag s
+		where e.tag=t.no and e.sub_tag=s.no
+	</select>
+
+	<select id="estimateSelect"
+		resultType="com.woongjin.woongs.model.EstimateDto" >
+		select e.no as no, budget, t.name as name,
+		t.no as tag, s.no as sub_tag,
+		s.name sub_name, title, description, content,  proposal
+		from estimate e, tag t, sub_tag s
+		where e.tag=t.no and e.sub_tag=s.no and e.no=#{no}
+	</select>
+	
+	<update id="estimateUpdate"
+		parameterType="com.woongjin.woongs.model.EstimateDto">
+		update estimate set
+		tag=#{tag},sub_tag=#{sub_tag}
+		,title=#{title},description=#{description}
+		,budget=#{budget},proposal=#{proposal}
+		,content=#{content}
+		where no=#{no};
+	</update>
+	
+	<delete id="estimateDelete"
+	parameterType="com.woongjin.woongs.model.EstimateDto">
+	delete from estimate where no=#{no}
+	</delete>
+	
+</mapper>

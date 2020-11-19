@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+<context:property-placeholder 
+location="classpath:db.properties" local-override="true"/>
+<!-- local-override="true" 프로퍼티에 이름대로 불러와서 사용할수있게 설정한다. -->
+
+<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+<property name="driverClassName" value="${driver}"/>
+<property name="url" value="${url}"/>
+<property name="username" value="${username}"/>
+<property name="password" value="${password}"/>
+</bean>
+
+<bean id="transactionManager"
+class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+<property name="dataSource" ref="dataSource" />
+</bean>
+<tx:annotation-driven transaction-manager="transactionManager" />
+
+
+<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+<property name="dataSource" ref="dataSource"/>
+<property name="mapperLocations" value="classpath:sql/*.xml"></property>
+<property name="configLocation" value="classpath:config.xml"></property>
+</bean>
+
+<bean id="TagDao" class="com.woongjin.woongs.model.TagDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+
+<bean id="PostDao" class="com.woongjin.woongs.model.PostDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+		
+<bean id="EstimateDao" class="com.woongjin.woongs.model.EstimateDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+		
+<bean id="QuoteDao" class="com.woongjin.woongs.model.QuoteDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+		
+<bean id="Admin_randomDao" class="com.woongjin.woongs.model.Admin_randomDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory" />
+	
+</beans>

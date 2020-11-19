@@ -1,0 +1,689 @@
+﻿-- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
+
+-- USER Table Create SQL
+CREATE TABLE USER
+(
+    `no`         INT            NOT NULL    AUTO_INCREMENT, 
+    `user_name`  VARCHAR(45)    NULL, 
+    `nick_name`  VARCHAR(45)    NULL, 
+    `password`   VARCHAR(45)    NULL, 
+    `email`      VARCHAR(45)    NULL, 
+    `reg_date`   TIMESTAMP      NULL, 
+    `birth`      DATETIME       NULL, 
+    `gender`     TINYINT        NULL, 
+    `image`      VARCHAR(45)    NULL, 
+    `favoriate`  VARCHAR(45)    NULL, 
+    `cash`       INT            NULL, 
+    `point`      INT            NULL, 
+    `date`       INT            NULL        COMMENT '접속일', 
+    `status`     CHAR(1)        NULL, 
+    PRIMARY KEY (no)
+);
+
+
+-- USER Table Create SQL
+CREATE TABLE TAG
+(
+    `no`              INT            NOT NULL    AUTO_INCREMENT, 
+    `name`            VARCHAR(45)    NULL, 
+    `alternate_path`  VARCHAR(45)    NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE TAG COMMENT '1차목차';
+
+
+-- USER Table Create SQL
+CREATE TABLE SUB_TAG
+(
+    `no`      INT            NOT NULL    AUTO_INCREMENT, 
+    `tag_no`  INT            NULL, 
+    `name`    VARCHAR(45)    NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE SUB_TAG COMMENT '2차목차';
+
+ALTER TABLE SUB_TAG
+    ADD CONSTRAINT FK_SUB_TAG_tag_no_TAG_no FOREIGN KEY (tag_no)
+        REFERENCES TAG (no) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE POST
+(
+    `no`                   INT             NOT NULL    AUTO_INCREMENT, 
+    `user_id`              VARCHAR(45)     NULL, 
+    `category_first`       INT             NULL, 
+    `category_second`      INT             NULL, 
+    `thumbnail`            VARCHAR(45)     NULL, 
+    `title`                VARCHAR(45)     NULL, 
+    `description`          VARCHAR(45)     NULL, 
+    `price`                INT             NULL, 
+    `worktime`             INT             NULL, 
+    `retouch_count`        INT             NULL, 
+    `service_description`  VARCHAR(45)     NULL, 
+    `requirement`          VARCHAR(255)    NULL, 
+    `status`               INT             NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE POST COMMENT '게시물';
+
+ALTER TABLE POST
+    ADD CONSTRAINT FK_POST_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE POST
+    ADD CONSTRAINT FK_POST_category_first_TAG_name FOREIGN KEY (category_first)
+        REFERENCES TAG (name) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE POST
+    ADD CONSTRAINT FK_POST_category_second_SUB_TAG_name FOREIGN KEY (category_second)
+        REFERENCES SUB_TAG (name) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE RESON
+(
+    `no`       INT            NOT NULL    AUTO_INCREMENT, 
+    `content`  VARCHAR(45)    NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE RESON COMMENT '탈퇴사유';
+
+
+-- USER Table Create SQL
+CREATE TABLE Q&A
+(
+    `no`           INT            NULL        AUTO_INCREMENT, 
+    `title`        VARCHAR(45)    NULL, 
+    `description`  VARCHAR(45)    NULL, 
+    `file`         VARCHAR(45)    NULL, 
+    `QnA_type`     VARCHAR(45)    NULL, 
+    `reg_date`     TIMESTAMP      NULL, 
+    `user_id`      VARCHAR(45)    NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE Q&A
+    ADD CONSTRAINT FK_Q&A_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE COUPON
+(
+    `no`                    INT            NOT NULL    AUTO_INCREMENT, 
+    `admin_id`              VARCHAR(45)    NULL, 
+    `coupon_code`           VARCHAR(45)    NULL, 
+    `coupon_name`           VARCHAR(45)    NULL, 
+    `coupon_price`          INT            NULL, 
+    `coupon_reg_date`       VARCHAR(45)    NULL, 
+    `coupon_vaildate_date`  VARCHAR(45)    NULL, 
+    `coupon_for_everyone`   INT            NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE COUPON
+    ADD CONSTRAINT FK_COUPON_admin_id_USER_email FOREIGN KEY (admin_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE WORK
+(
+    `work_id`    INT            NOT NULL    AUTO_INCREMENT, 
+    `client_id`  VARCHAR(45)    NULL, 
+    `worker_id`  VARCHAR(45)    NULL, 
+    `work_date`  INT            NULL, 
+    PRIMARY KEY (work_id)
+);
+
+ALTER TABLE WORK COMMENT '작업';
+
+ALTER TABLE WORK
+    ADD CONSTRAINT FK_WORK_client_id_USER_email FOREIGN KEY (client_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE WORK
+    ADD CONSTRAINT FK_WORK_worker_id_USER_email FOREIGN KEY (worker_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE PORTFOLIO
+(
+    `no`            INT            NOT NULL    AUTO_INCREMENT, 
+    `user_id`       VARCHAR(45)    NULL, 
+    `title`         VARCHAR(45)    NULL, 
+    `content`       VARCHAR(45)    NULL, 
+    `thumbnail`     VARCHAR(45)    NULL, 
+    `potfolio_img`  VARCHAR(45)    NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE PORTFOLIO
+    ADD CONSTRAINT FK_PORTFOLIO_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE BALANCE
+(
+    `no`                          INT            NOT NULL    AUTO_INCREMENT, 
+    `user_id`                     VARCHAR(45)    NULL, 
+    `user_balance`                INT            NULL, 
+    `user_expected_balance`       INT            NULL, 
+    `user_withdrawn_balance`      INT            NULL, 
+    `user_monthly_total_balance`  INT            NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE BALANCE COMMENT '전문가 잔고확인';
+
+ALTER TABLE BALANCE
+    ADD CONSTRAINT FK_BALANCE_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE EVALUATION
+(
+    `no`       INT            NOT NULL    AUTO_INCREMENT, 
+    `user_id`  VARCHAR(45)    NULL, 
+    `score`    INT            NULL, 
+    `review`   VARCHAR(45)    NULL, 
+    `post_no`  INT            NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE EVALUATION
+    ADD CONSTRAINT FK_EVALUATION_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE EVALUATION
+    ADD CONSTRAINT FK_EVALUATION_post_no_POST_no FOREIGN KEY (post_no)
+        REFERENCES POST (no) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE PRICELIST
+(
+    `no`             INT                 NOT NULL, 
+    `title`          VARCHAR(45)         NULL, 
+    `description`    VARCHAR(45)         NULL, 
+    `retouch_count`  INT                 NULL, 
+    `price`          INT                 NULL, 
+    `worktime`       INT(default{14})    NULL, 
+    `reg_date`       TIMESTAMP           NULL, 
+    `writter`        VARCHAR(45)         NULL   
+);
+
+ALTER TABLE PRICELIST COMMENT '가격표';
+
+ALTER TABLE PRICELIST
+    ADD CONSTRAINT FK_PRICELIST_no_POST_no FOREIGN KEY (no)
+        REFERENCES POST (no) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE ACCOUNTINFO
+(
+    `no`              INT            NOT NULL    AUTO_INCREMENT, 
+    `user_id`         VARCHAR(45)    NULL, 
+    `bank_name`       VARCHAR(45)    NULL, 
+    `account_number`  VARCHAR(45)    NULL, 
+    `owner_name`      VARCHAR(45)    NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE ACCOUNTINFO COMMENT '계좌정보';
+
+ALTER TABLE ACCOUNTINFO
+    ADD CONSTRAINT FK_ACCOUNTINFO_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE WORKORDER
+(
+    `no`         INT            NOT NULL    AUTO_INCREMENT, 
+    `client_id`  VARCHAR(45)    NULL, 
+    `worker_id`  VARCHAR(45)    NULL, 
+    `post_no`    INT            NULL, 
+    `status`     varchar        NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE WORKORDER COMMENT '작업수주';
+
+ALTER TABLE WORKORDER
+    ADD CONSTRAINT FK_WORKORDER_post_no_POST_no FOREIGN KEY (post_no)
+        REFERENCES POST (no) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE WORKORDER
+    ADD CONSTRAINT FK_WORKORDER_client_id_USER_email FOREIGN KEY (client_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE WORKORDER
+    ADD CONSTRAINT FK_WORKORDER_worker_id_USER_email FOREIGN KEY (worker_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE PROFILE
+(
+    `no`           INT            NOT NULL    AUTO_INCREMENT, 
+    `user_id`      VARCHAR(45)    NOT NULL, 
+    `introduce`    VARCHAR(45)    NULL, 
+    `tag`          VARCHAR(45)    NULL, 
+    `sub_tag`      VARCHAR(45)    NULL, 
+    `skill`        VARCHAR(45)    NULL, 
+    `univ_name`    VARCHAR(45)    NULL, 
+    `univ_major`   VARCHAR(45)    NULL, 
+    `univ_status`  INT            NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE PROFILE COMMENT '학력';
+
+ALTER TABLE PROFILE
+    ADD CONSTRAINT FK_PROFILE_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE PROFILE
+    ADD CONSTRAINT FK_PROFILE_tag_TAG_name FOREIGN KEY (tag)
+        REFERENCES TAG (name) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE PROFILE
+    ADD CONSTRAINT FK_PROFILE_sub_tag_SUB_TAG_name FOREIGN KEY (sub_tag)
+        REFERENCES SUB_TAG (name) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE WISHLIST
+(
+    `no`       INT            NOT NULL    AUTO_INCREMENT, 
+    `user_id`  VARCHAR(45)    NULL, 
+    `post_no`  INT            NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE WISHLIST COMMENT '관심상품';
+
+ALTER TABLE WISHLIST
+    ADD CONSTRAINT FK_WISHLIST_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE WISHLIST
+    ADD CONSTRAINT FK_WISHLIST_post_no_POST_no FOREIGN KEY (post_no)
+        REFERENCES POST (no) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE CERTIFICATION
+(
+    `user_id`             VARCHAR(45)    NOT NULL, 
+    `issu_date`           TIMESTAMP      NULL, 
+    `issu_agency`         VARCHAR(45)    NULL, 
+    `certification_name`  VARCHAR(45)    NULL   
+);
+
+ALTER TABLE CERTIFICATION COMMENT '자격증';
+
+ALTER TABLE CERTIFICATION
+    ADD CONSTRAINT FK_CERTIFICATION_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE CAREER
+(
+    `no`            INT            NOT NULL    AUTO_INCREMENT, 
+    `user_id`       VARCHAR(45)    NULL, 
+    `company_name`  VARCHAR(45)    NULL, 
+    `dept_name`     VARCHAR(45)    NULL, 
+    `position`      VARCHAR(45)    NULL, 
+    `year`          INT            NULL, 
+    `month`         INT            NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE CAREER COMMENT '경력';
+
+ALTER TABLE CAREER
+    ADD CONSTRAINT FK_CAREER_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE MESSAGE
+(
+    `message_id`        INT            NOT NULL    AUTO_INCREMENT, 
+    `message-sender`    VARCHAR(45)    NULL, 
+    `message_receiver`  VARCHAR(45)    NULL, 
+    `message_content`   VARCHAR(45)    NULL, 
+    `message_sendtime`  TEXT           NULL, 
+    `chatroom_id`       INT            NULL, 
+    `message_readtime`  DATETIME       NULL, 
+    `worker_id`         VARCHAR(45)    NULL, 
+    `client_id`         VARCHAR(45)    NULL, 
+    `post_no`           INT            NULL, 
+    PRIMARY KEY (message_id)
+);
+
+ALTER TABLE MESSAGE COMMENT '채팅';
+
+ALTER TABLE MESSAGE
+    ADD CONSTRAINT FK_MESSAGE_post_no_POST_no FOREIGN KEY (post_no)
+        REFERENCES POST (no) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE MESSAGE
+    ADD CONSTRAINT FK_MESSAGE_worker_id_USER_email FOREIGN KEY (worker_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE MESSAGE
+    ADD CONSTRAINT FK_MESSAGE_client_id_USER_email FOREIGN KEY (client_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE CHAT
+(
+    `chatroom_id`  INT            NOT NULL    AUTO_INCREMENT, 
+    `worker_id`    VARCHAR(45)    NULL, 
+    `client_id`    VARCHAR(45)    NULL, 
+    `post_no`      INT            NULL, 
+    PRIMARY KEY (chatroom_id)
+);
+
+ALTER TABLE CHAT
+    ADD CONSTRAINT FK_CHAT_post_no_POST_no FOREIGN KEY (post_no)
+        REFERENCES POST (no) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE CHAT
+    ADD CONSTRAINT FK_CHAT_worker_id_USER_email FOREIGN KEY (worker_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE CHAT
+    ADD CONSTRAINT FK_CHAT_client_id_USER_email FOREIGN KEY (client_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE ESTIMATE
+(
+    `no`           INT              NOT NULL    AUTO_INCREMENT, 
+    `user_id`      VARCHAR(45)      NULL, 
+    `tag`          VARCHAR(45)      NULL, 
+    `sub_tag`      VARCHAR(45)      NULL, 
+    `title`        VARCHAR(45)      NULL, 
+    `description`  VARCHAR(45)      NULL, 
+    `budget`       INT              NULL, 
+    `proposal`     VARCHAR(1000)    NULL, 
+    `content`      VARCHAR(1000)    NULL, 
+    `post_no`      INT              NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE ESTIMATE COMMENT '고객이 요청한 견적 페이지';
+
+ALTER TABLE ESTIMATE
+    ADD CONSTRAINT FK_ESTIMATE_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE ESTIMATE
+    ADD CONSTRAINT FK_ESTIMATE_tag_TAG_name FOREIGN KEY (tag)
+        REFERENCES TAG (name) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE ESTIMATE
+    ADD CONSTRAINT FK_ESTIMATE_sub_tag_SUB_TAG_name FOREIGN KEY (sub_tag)
+        REFERENCES SUB_TAG (name) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE QUOTE
+(
+    `no`              INT              NOT NULL    AUTO_INCREMENT, 
+    `user_id`         VARCHAR(45)      NULL, 
+    `worker_id`       VARCHAR(45)      NULL, 
+    `post_no`         INT              NULL, 
+    `detail`          VARCHAR(1000)    NULL, 
+    `estimate_price`  INT              NULL, 
+    `final_price`     INT              NULL, 
+    `work_time`       INT              NULL, 
+    `image`           VARCHAR(45)      NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE QUOTE COMMENT '전문가가 보내는 견적 페이지';
+
+ALTER TABLE QUOTE
+    ADD CONSTRAINT FK_QUOTE_post_no_POST_no FOREIGN KEY (post_no)
+        REFERENCES POST (no) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE QUOTE
+    ADD CONSTRAINT FK_QUOTE_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE QUOTE
+    ADD CONSTRAINT FK_QUOTE_worker_id_USER_email FOREIGN KEY (worker_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE RANKING
+(
+    `no`       INT            NULL, 
+    `tag`      VARCHAR(45)    NULL, 
+    `price`    INT            NULL, 
+    `user_id`  VARCHAR(45)    NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE RANKING COMMENT '인기차트';
+
+ALTER TABLE RANKING
+    ADD CONSTRAINT FK_RANKING_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE RANKING
+    ADD CONSTRAINT FK_RANKING_tag_TAG_name FOREIGN KEY (tag)
+        REFERENCES TAG (name) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE BLACKLIST
+(
+    `no`        INT            NOT NULL    AUTO_INCREMENT, 
+    `user_id`   VARCHAR(45)    NULL, 
+    `reg_date`  TIMESTAMP      NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE BLACKLIST COMMENT '정지계정';
+
+ALTER TABLE BLACKLIST
+    ADD CONSTRAINT FK_BLACKLIST_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE PENALTY
+(
+    `no`        INT            NOT NULL    AUTO_INCREMENT, 
+    `user_id`   VARCHAR(45)    NULL, 
+    `why`       VARCHAR(45)    NULL, 
+    `reg_date`  TIMESTAMP      NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE PENALTY COMMENT '경고';
+
+ALTER TABLE PENALTY
+    ADD CONSTRAINT FK_PENALTY_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE DORMANT_USER
+(
+    `no`        INT            NOT NULL    AUTO_INCREMENT, 
+    `reg_date`  TIMESTAMP      NULL, 
+    `user_id`   VARCHAR(45)    NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE DORMANT_USER COMMENT '휴면계정';
+
+ALTER TABLE DORMANT_USER
+    ADD CONSTRAINT FK_DORMANT_USER_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE RESON_WHY
+(
+    `no`       INT            NOT NULL    AUTO_INCREMENT, 
+    `content`  VARCHAR(45)    NULL, 
+    `context`  VARCHAR(45)    NULL        COMMENT '본문내용', 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE RESON_WHY COMMENT '기타사유';
+
+ALTER TABLE RESON_WHY
+    ADD CONSTRAINT FK_RESON_WHY_content_RESON_content FOREIGN KEY (content)
+        REFERENCES RESON (content) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE Q&A_CATEGORY
+(
+    `no`             INT            NOT NULL    AUTO_INCREMENT, 
+    `category_name`  VARCHAR(45)    NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE Q&A_CATEGORY
+    ADD CONSTRAINT FK_Q&A_CATEGORY_category_name_Q&A_QnA_type FOREIGN KEY (category_name)
+        REFERENCES Q&A (QnA_type) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE ADMIN
+(
+    `no`        INT            NOT NULL    AUTO_INCREMENT, 
+    `admin_id`  VARCHAR(45)    NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE ADMIN
+    ADD CONSTRAINT FK_ADMIN_admin_id_USER_email FOREIGN KEY (admin_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE MAIN_BANNER
+(
+    `no`              INT            NOT NULL    AUTO_INCREMENT, 
+    `title`           VARCHAR(45)    NULL, 
+    `reg_date`        TIMESTAMP      NULL, 
+    `alternate_path`  VARCHAR(45)    NULL        COMMENT '경로', 
+    PRIMARY KEY (no)
+);
+
+
+-- USER Table Create SQL
+CREATE TABLE COUPON_MANAGEMENT
+(
+    `no`         INT            NOT NULL    AUTO_INCREMENT, 
+    `user_id`    VARCHAR(45)    NULL, 
+    `coupon_no`  INT            NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE COUPON_MANAGEMENT
+    ADD CONSTRAINT FK_COUPON_MANAGEMENT_coupon_no_COUPON_no FOREIGN KEY (coupon_no)
+        REFERENCES COUPON (no) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE COUPON_MANAGEMENT
+    ADD CONSTRAINT FK_COUPON_MANAGEMENT_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE T_PAID_HISTORY
+(
+    `no`            INT            NOT NULL    AUTO_INCREMENT, 
+    `user_id`       VARCHAR(45)    NULL, 
+    `paid_user_id`  VARCHAR(45)    NULL, 
+    `paid_date`     TIMESTAMP      NULL, 
+    `price`         INT            NULL, 
+    `product_no`    INT            NULL, 
+    `finish_yn`     CHAR(1)        NULL, 
+    `month`         INT            NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE T_PAID_HISTORY COMMENT '거래성사';
+
+ALTER TABLE T_PAID_HISTORY
+    ADD CONSTRAINT FK_T_PAID_HISTORY_product_no_TAG_no FOREIGN KEY (product_no)
+        REFERENCES TAG (no) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE T_PAID_HISTORY
+    ADD CONSTRAINT FK_T_PAID_HISTORY_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE T_PAID_HISTORY
+    ADD CONSTRAINT FK_T_PAID_HISTORY_paid_user_id_USER_email FOREIGN KEY (paid_user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE CHATROOM
+(
+    `chatroom_id`  INT            NOT NULL    AUTO_INCREMENT, 
+    `client_id`    VARCHAR(45)    NULL, 
+    `worker_id`    VARCHAR(45)    NULL, 
+    `post_no`      INT            NULL, 
+    PRIMARY KEY (chatroom_id)
+);
+
+ALTER TABLE CHATROOM
+    ADD CONSTRAINT FK_CHATROOM_post_no_POST_no FOREIGN KEY (post_no)
+        REFERENCES POST (no) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE CHATROOM
+    ADD CONSTRAINT FK_CHATROOM_client_id_USER_email FOREIGN KEY (client_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+ALTER TABLE CHATROOM
+    ADD CONSTRAINT FK_CHATROOM_worker_id_USER_email FOREIGN KEY (worker_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+-- USER Table Create SQL
+CREATE TABLE REQUEST_POST
+(
+    `no`           INT             NOT NULL    AUTO_INCREMENT, 
+    `thumbnail`    VARCHAR(45)     NULL, 
+    `user_id`      VARCHAR(45)     NULL, 
+    `tag`          VARCHAR(45)     NULL, 
+    `sub_tag`      VARCHAR(45)     NULL, 
+    `title`        VARCHAR(45)     NULL, 
+    `description`  VARCHAR(45)     NULL, 
+    `budget`       INT             NULL, 
+    `content`      VARCHAR(225)    NULL, 
+    `date`         DATE            NULL, 
+    PRIMARY KEY (no)
+);
+
+ALTER TABLE REQUEST_POST
+    ADD CONSTRAINT FK_REQUEST_POST_user_id_USER_email FOREIGN KEY (user_id)
+        REFERENCES USER (email) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+

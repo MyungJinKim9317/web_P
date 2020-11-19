@@ -1,0 +1,110 @@
+
+8월 07, 2020 11:06:11.599 NEW SESSION
+8월 07, 2020 11:06:11.599 [8956:13984:0807/110611.576:ERROR:device_event_log_impl.cc(208)] [11:06:11.576] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 07, 2020 11:09:29.816 [5984:10256:0807/110929.816:ERROR:device_event_log_impl.cc(208)] [11:09:29.815] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 07, 2020 14:48:23.164 [13372:13016:0807/144823.164:ERROR:device_event_log_impl.cc(208)] [14:48:23.164] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 07, 2020 15:32:20.781 [13472:4476:0807/153220.781:ERROR:device_event_log_impl.cc(208)] [15:32:20.781] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 07, 2020 16:53:24.648 [15044:15100:0807/165324.648:ERROR:device_event_log_impl.cc(208)] [16:53:24.649] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 07, 2020 18:04:20.881 [15044:15100:0807/180420.881:ERROR:network_service_instance_impl.cc(263)] Network service crashed, restarting service.
+8월 07, 2020 18:05:01.378 [11424:14260:0807/180501.378:ERROR:device_event_log_impl.cc(208)] [18:05:01.377] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 07, 2020 18:07:18.940 [13444:12772:0807/180718.940:ERROR:device_event_log_impl.cc(208)] [18:07:18.940] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 07, 2020 18:21:10.510 [14184:13812:0807/182110.510:ERROR:device_event_log_impl.cc(208)] [18:21:10.509] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 07, 2020 18:32:50.807 [11080:584:0807/183250.806:ERROR:device_event_log_impl.cc(208)] [18:32:50.807] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 07, 2020 18:33:58.591 [416:7956:0807/183358.591:ERROR:device_event_log_impl.cc(208)] [18:33:58.591] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 07, 2020 18:36:07.609 [5636:8760:0807/183607.609:ERROR:device_event_log_impl.cc(208)] [18:36:07.609] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+8월 10, 2020 09:26:31.848 NEW SESSION
+8월 10, 2020 09:26:31.848 [6592:7956:0810/092631.846:ERROR:device_event_log_impl.cc(208)] [09:26:31.846] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+8월 10, 2020 09:47:02.971 NEW SESSION
+8월 10, 2020 09:47:02.972 [11476:6264:0810/094702.969:ERROR:device_event_log_impl.cc(208)] [09:47:02.969] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 10, 2020 09:54:05.86 [976:2768:0810/095405.086:ERROR:device_event_log_impl.cc(208)] [09:54:05.086] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 10, 2020 10:54:55.293 [2552:2512:0810/105455.293:ERROR:device_event_log_impl.cc(208)] [10:54:55.293] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 10, 2020 15:03:57.582 [6532:3304:0810/150357.582:ERROR:device_event_log_impl.cc(208)] [15:03:57.582] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 10, 2020 15:12:23.448 [5792:14616:0810/151223.448:ERROR:device_event_log_impl.cc(208)] [15:12:23.449] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 10, 2020 15:17:07.442 [13696:10744:0810/151707.442:ERROR:device_event_log_impl.cc(208)] [15:17:07.442] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 10, 2020 15:53:52.286 [12664:11692:0810/155352.286:ERROR:device_event_log_impl.cc(208)] [15:53:52.286] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 10, 2020 15:55:44.472 [3180:1600:0810/155544.472:ERROR:device_event_log_impl.cc(208)] [15:55:44.471] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 10, 2020 16:28:16.903 [2816:13580:0810/162816.903:ERROR:device_event_log_impl.cc(208)] [16:28:16.903] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 10, 2020 16:32:10.233 [14804:8048:0810/163210.232:ERROR:device_event_log_impl.cc(208)] [16:32:10.232] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 10, 2020 17:31:43.113 [6824:6416:0810/173143.112:ERROR:device_event_log_impl.cc(208)] [17:31:43.113] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 10, 2020 18:14:15.637 [3612:3108:0810/181415.637:ERROR:device_event_log_impl.cc(208)] [18:14:15.637] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 10, 2020 18:14:31.533 [12112:3156:0810/181431.533:ERROR:device_event_log_impl.cc(208)] [18:14:31.533] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 10, 2020 18:15:29.68 [5440:13696:0810/181529.067:ERROR:device_event_log_impl.cc(208)] [18:15:29.068] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 10, 2020 18:32:40.855 [4360:5932:0810/183240.855:ERROR:device_event_log_impl.cc(208)] [18:32:40.855] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 10, 2020 18:33:41.421 [5324:10100:0810/183341.421:ERROR:device_event_log_impl.cc(208)] [18:33:41.421] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+8월 11, 2020 09:40:28.414 NEW SESSION
+8월 11, 2020 09:40:28.414 [1496:6028:0811/094028.094:ERROR:device_event_log_impl.cc(208)] [09:40:28.094] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 11, 2020 10:12:45.667 [8288:2404:0811/101245.667:ERROR:device_event_log_impl.cc(208)] [10:12:45.667] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+8월 11, 2020 10:25:48.791 NEW SESSION
+8월 11, 2020 10:25:48.791 [7088:5060:0811/102548.789:ERROR:device_event_log_impl.cc(208)] [10:25:48.788] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 11, 2020 10:42:31.176 [1820:364:0811/104231.176:ERROR:device_event_log_impl.cc(208)] [10:42:31.176] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 11, 2020 10:49:31.689 [2624:9804:0811/104931.689:ERROR:device_event_log_impl.cc(208)] [10:49:31.689] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 11, 2020 10:50:56.243 [1064:13204:0811/105056.243:ERROR:device_event_log_impl.cc(208)] [10:50:56.243] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 11, 2020 11:05:51.193 [2600:5944:0811/110551.192:ERROR:device_event_log_impl.cc(208)] [11:05:51.193] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+8월 11, 2020 15:32:43.727 NEW SESSION
+8월 11, 2020 15:32:43.727 [10852:12280:0811/153243.723:ERROR:device_event_log_impl.cc(208)] [15:32:43.723] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+8월 11, 2020 15:34:50.758 [4480:12260:0811/153450.757:ERROR:device_event_log_impl.cc(208)] [15:34:50.757] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+8월 11, 2020 16:31:10.744 NEW SESSION
+8월 11, 2020 16:31:10.744 [13460:15772:0811/163110.742:ERROR:device_event_log_impl.cc(208)] [16:31:10.742] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+8월 11, 2020 17:32:46.290 NEW SESSION
+8월 11, 2020 17:32:46.290 [900:1236:0811/173246.288:ERROR:device_event_log_impl.cc(208)] [17:32:46.288] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+8월 11, 2020 18:10:01.473 NEW SESSION
+8월 11, 2020 18:10:01.473 [15180:5368:0811/181001.471:ERROR:device_event_log_impl.cc(208)] [18:10:01.471] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+8월 24, 2020 14:01:34.725 NEW SESSION
+8월 24, 2020 14:01:34.726 [5012:8828:0824/140134.715:ERROR:page_load_metrics_update_dispatcher.cc(165)] Invalid first_paint 0.331 s for first_image_paint 0.316 s
+8월 24, 2020 14:01:35.889 [5012:8828:0824/140135.888:ERROR:page_load_metrics_update_dispatcher.cc(165)] Invalid first_paint 0.331 s for first_image_paint 0.316 s
+8월 24, 2020 14:01:37.350 [5012:8828:0824/140137.350:ERROR:page_load_metrics_update_dispatcher.cc(165)] Invalid first_paint 0.331 s for first_image_paint 0.316 s
+
+9월 18, 2020 19:06:33.499 NEW SESSION
+9월 18, 2020 19:06:33.499 [1504:17700:0918/190633.495:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+
+9월 21, 2020 15:19:43.596 NEW SESSION
+9월 21, 2020 15:19:43.596 [8684:12404:0921/151943.591:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 21, 2020 17:21:58.327 [8684:23392:0921/172158.318:ERROR:socket_stream.cc(219)] Closing stream with result -2
+9월 21, 2020 17:24:33.432 [22104:11328:0921/172433.432:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 21, 2020 17:34:28.361 [264:14196:0921/173428.361:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 21, 2020 17:34:53.958 [19024:13616:0921/173453.957:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 21, 2020 17:51:46.803 [9120:19320:0921/175146.803:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 21, 2020 18:45:53.560 [9120:7472:0921/184553.560:ERROR:socket_stream.cc(219)] Closing stream with result -2
+
+9월 22, 2020 10:15:03.107 NEW SESSION
+9월 22, 2020 10:15:03.107 [15596:16688:0922/101503.104:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 22, 2020 11:07:08.109 [13072:19616:0922/110708.108:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 22, 2020 13:50:32.792 [13072:12076:0922/135032.788:ERROR:socket_stream.cc(219)] Closing stream with result -2
+9월 22, 2020 13:50:34.821 [13072:15756:0922/135034.814:ERROR:get_updates_processor.cc(258)] PostClientToServerMessage() failed during GetUpdates with error 2
+9월 22, 2020 13:50:38.801 [13072:12076:0922/135038.800:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -105
+9월 22, 2020 13:51:00.152 [13072:12076:0922/135100.151:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -105
+9월 22, 2020 13:51:25.829 [13072:15756:0922/135125.829:ERROR:get_updates_processor.cc(258)] PostClientToServerMessage() failed during GetUpdates with error 2
+9월 22, 2020 13:51:58.875 [13072:12076:0922/135158.866:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -105
+
+9월 22, 2020 17:52:12.13 NEW SESSION
+9월 22, 2020 17:52:12.13 [18100:20032:0922/175212.010:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 22, 2020 17:52:43.94 [17832:19004:0922/175243.094:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 22, 2020 17:53:44.800 [19888:19512:0922/175344.799:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 22, 2020 17:57:29.960 [18020:17520:0922/175729.960:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 22, 2020 18:31:16.188 [18020:19748:0922/183116.187:ERROR:socket_stream.cc(219)] Closing stream with result -2
+
+9월 22, 2020 23:07:33.412 NEW SESSION
+9월 22, 2020 23:07:33.412 [19072:21648:0922/230733.410:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 22, 2020 23:08:37.508 [5988:14312:0922/230837.508:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 22, 2020 23:39:02.916 [2700:16240:0922/233902.916:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 22, 2020 23:44:52.859 [1080:12196:0922/234452.859:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+
+9월 23, 2020 09:54:25.927 NEW SESSION
+9월 23, 2020 09:54:25.930 [2352:13572:0923/095425.884:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+
+9월 23, 2020 17:50:48.145 NEW SESSION
+9월 23, 2020 17:50:48.145 [10548:23700:0923/175048.142:ERROR:media_history_store.cc(363)] Failed to create or update the media history store.
+9월 23, 2020 19:04:40.515 [10548:24156:0923/190440.513:ERROR:socket_stream.cc(219)] Closing stream with result -2
+9월 23, 2020 19:53:54.379 [10548:24156:0923/195354.379:ERROR:socket_stream.cc(219)] Closing stream with result -2
+
+10월 16, 2020 18:25:23.169 NEW SESSION
+10월 16, 2020 18:25:23.169 [1016/182523.161:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)

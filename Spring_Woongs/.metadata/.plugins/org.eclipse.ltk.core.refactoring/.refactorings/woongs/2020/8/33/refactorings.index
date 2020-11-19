@@ -1,0 +1,14 @@
+1597019774997	Rename package 'woongs.controller'
+1597019782685	Rename package 'woongs.service'
+1597019789934	Rename package 'woongsEx.model'
+1597022663823	Delete element
+1597023470802	Delete element
+1597023728393	Move 'menu1.jsp' to 'menu'
+1597040176763	Delete element
+1597109948619	Move 4 resources to 'views'
+1597126237494	Rename type 'WoongsService'
+1597126272617	Rename type 'WoongsDao'
+1597126300890	Rename type 'WoongsController'
+1597130794467	Delete element
+1597198244430	Move compilation unit
+1597200196228	Delete element

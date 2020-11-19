@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Tag">
+	<insert id="addTag" parameterType="String">
+		insert into tag(name)
+		values(#{name})
+	</insert>
+
+	<insert id="addSub_Tag"
+		parameterType="com.woongjin.woongs.model.Sub_TagDto">
+		insert into sub_tag(tag_no,name) select no,#{sub_name}
+		from tag where
+		no=#{no}
+	</insert>
+
+	<select id="chooseTag"
+		resultType="com.woongjin.woongs.model.TagDto">
+		select no, name from tag
+	</select>
+
+	<select id="chooseSubTag"
+		resultType="com.woongjin.woongs.model.Sub_TagDto" parameterType="int">
+		select s.no as no, s.tag_no as tag_no, s.name sub_name 
+		from tag as t join sub_tag as s
+		where t.no = s.tag_no and t.no=#{no}
+	</select>
+
+	<delete id="deleteSubTag" parameterType="int">
+		delete from sub_tag
+		where no=#{no}
+	</delete>
+
+	<delete id="deleteTag"
+		parameterType="com.woongjin.woongs.model.TagDto">
+		delete from tag where no=#{no}
+	</delete>
+
+	<select id="selectPost"
+		resultType="com.woongjin.woongs.model.PostDto" parameterType="map">
+		select p.no,p.user_id,p.title,p.thumbnail
+		from tag t , post p , sub_tag s
+		where t.no = p.category_first and s.no = p.category_second and p.category_first = #{category_first} and p.category_second = #{category_second}
+	</select>
+	
+	<select id="tagSelectPost"
+		resultType="com.woongjin.woongs.model.PostDto" parameterType="int">
+		select p.no,p.user_id,p.title,p.thumbnail
+		from tag t , post p 
+		where t.no = p.category_first and  t.no=#{no}
+	</select>
+	
+	
+	<select id="checkPost" 
+	resultType="com.woongjin.woongs.model.PostDto" parameterType="int">
+	select * from post where no=${no}
+	</select>
+	
+	<select id="orderPost" resultType="com.woongjin.woongs.model.PostDto">
+	select * from post order by no desc
+	</select>
+</mapper>   
+

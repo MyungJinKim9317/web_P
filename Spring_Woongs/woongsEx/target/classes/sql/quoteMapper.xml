@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="quote">
+
+
+<insert id="quoteAdd" parameterType="com.woongjin.woongs.model.QuoteDto">
+insert into quote( detail,  final_price,  attachment,  post_no)
+values(#{detail},#{final_price},#{attachment},#{post_no});
+</insert>
+
+<select id="quoteAllSelect" resultType="com.woongjin.woongs.model.QuoteDto">
+select * from quote
+</select>
+
+	<select id="estimateAllSelect"
+		resultType="com.woongjin.woongs.model.EstimateDto" >
+		select * from estimate
+	</select>
+	
+	<select id="quotePostnoCount" resultType="com.woongjin.woongs.model.QuoteDto">
+	select count(post_no) as count, post_no 
+	from quote where post_no = #{post_no}
+	</select>
+	
+	<select id="quotePostAllCount" resultType="com.woongjin.woongs.model.QuoteDto">
+	select post_no,count(post_no) 
+	from quote group by post_no;
+	</select>
+
+</mapper>
